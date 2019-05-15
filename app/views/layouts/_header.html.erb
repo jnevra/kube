@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+        <!-- Material for bootstrap css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+      <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Kube JS (optional if you are using Kube CSS only) -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#"> <font color="white">NCLINK</font> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%=link_to "Home", root_path, class:'nav-link' %>
+      </li>
+      <li class="nav-item">
+      <%=link_to "Help", static_pages_help_path, class:'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%=link_to "About", static_pages_about_path, class:'nav-link' %>
+      </li>
+      <% if logged_in? %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <%= link_to "Users", users_path, class:'nav-link' %>
+        </li>
+        </ul>
+    </ul>
+
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+     <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">
+         <i class="zmdi zmdi-flower-alt mdc-text-red"></i> Profile
+
+       </a>
+       <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+         <%= link_to "Settings", edit_user_path(current_user), class:'dropdown-item' %>
+         <div class="dropdown-divider"></div>
+         <%= link_to "Log out", logout_path, method: "delete", class:'dropdown-item' %>
+
+       </div>
+     </li>
+   </ul>
+
+    <% else %>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+     <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">
+         <i class="zmdi zmdi-flower-alt mdc-text-red"></i> Login
+
+       </a>
+       <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+         <%=link_to "Sign Up", users_new_path, class:'dropdown-item' %>
+           <div class="dropdown-divider"></div>
+         <%= link_to "Log in", login_path, class:'dropdown-item' %>
+
+       </div>
+     </li>
+   </ul>
+      <% end %>
+
+  </div>
+
+</nav>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+  </body>
+</html>
